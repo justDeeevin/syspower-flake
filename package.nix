@@ -14,8 +14,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "System64fumo";
     repo = "syspower";
-    rev = "323332b4d97a30360455682194ed35868fcbaf71";
-    hash = "sha256-obL9XUf8kONBWZoyrPvN1PWmEyQx8vMsl6KIneSjkGM=";
+    rev = "89ddffa4b41214f9a76602cd832cce18d4283fdb";
+    hash = "sha256-Qqia7JXM0LauadYoD8OCw/Yva2M+TZrhMSE8HRo8LTY=";
   };
 
   buildInputs = [
