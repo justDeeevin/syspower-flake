@@ -76,11 +76,7 @@
         };
       };
 
-      perSystem = {
-        pkgs,
-        lib,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         packages.default = pkgs.callPackage ./package.nix {};
       };
     };
