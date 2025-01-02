@@ -66,8 +66,6 @@
         config = mkIf cfg.enable {
           home.packages = [cfg.package];
 
-          nixpkgs.overlays = [flake.overlays.default];
-
           home.file = {
             ".config/sys64/power/config.conf".text = ''
               [main]
