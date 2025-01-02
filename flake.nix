@@ -42,6 +42,19 @@
               default = 1000;
               description = "Reveal transition duration in milliseconds";
             };
+            hotkey = mkOption {
+              type = types.either types.str (types.listOf types.str);
+              default = [
+                "u,shutdown"
+                "r,reboot"
+                "l,logout"
+                "s,suspend"
+                "c,cancel"
+                "Escape,cancel"
+              ];
+              description = "Hotkeys";
+              example = "x,cancel";
+            };
           };
           style = mkOption {
             type = types.str;
@@ -70,6 +83,11 @@
                 else 4)}
               monitor=${builtins.toString cfg.settings.monitor}
               transition-duration=${builtins.toString cfg.settings.transition-duration}
+              ${
+                if lib.isString cfg.settings.hotkey
+                then "hotkey=${cfg.settings.hotkey}"
+                else lib.concatStrings (builtins.map (hotkey: "hotkey=${hotkey}\n") cfg.settings.hotkey)
+              }
             '';
             ".config/sys64/power/style.css".text = cfg.style;
           };
